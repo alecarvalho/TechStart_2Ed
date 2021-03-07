@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>Cadastro de Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+        <h1>Produtos</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <div class="col-8 m-auto pt-4 pb-2 text-center">
+            <a href="/" class="btn btn-success">Voltar</a>
+        </div>
+
+    </div>
+    <div class=" m-auto text-center" id="result"></div>
+    <form class="form-control form-control-lg" name="form" id="form"
+        action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
+        {% csrf_token%}
+        <div class="col-12 m-auto pt-6 pb-4 text-center">
+            <label for="nome">Nome</label>
+
+            <div><i class="form-group mt-6 col-12" id="nome" placeholder="Nome:"> {{form.trade_name}}</i></div>
+            <label for="nome">Razão social</label>
+            <div><i class="form-group mt-6 col-12" id="company_name" placeholder="Razão social::">
+                    {{form.company_name}}</i></div>
+            <label for="nome">CNPJ</label>
+            <div><i class="form-group mt-6    col-12" id="CNPJ" placeholder="CNPJ:"> {{form.cnpj}}</i></div>
+            <label for="nome">Email</label>
+            <div><i class="form-group mt-6    col-12" id="Email" placeholder="Email:"> {{form.email}}</i></div>
+            <label for="nome">Telefone</label>
+            <div><i class="form-group mt-6    col-12" id="Telefone" placeholder="Telefone:"> {{form.phone}}</i></div>
+            <label for="nome">Endereço</label>
+            <div><i class="form-group mt-6 pt-6 pb-6   col-12 " id="Endereço" placeholder="Endereço:">
+                    {{form.address}}</i></div><br />
+            <input type="submit" class="btn btn-success" value="Salvar">
+        </div>
+    </form>
+    {% load static %}
+    <script src="{% static 'JavaScript.js' %}"></script>
+</body>
+
+</html>
