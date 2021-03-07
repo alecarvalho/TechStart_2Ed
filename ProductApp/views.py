@@ -8,8 +8,8 @@ def indexProduct(request):
     data={}
     search = request.GET.get('search')
     if search:
-        data['db'] = Product.objects.filter(name__icontains=search) or Products.objects.filter(description__icontains=search) \
-                     or Products.objects.filter(value__icontains=search) or Products.objects.filter(categories__icontains=search)
+        data['db'] = Product.objects.filter(name__icontains=search) or Product.objects.filter(description__icontains=search) \
+                     or Product.objects.filter(value__icontains=search) or Product.objects.filter(categories__icontains=search)
     else:
         data['db'] = Product.objects.all()
         all =  Product.objects.all()
@@ -61,12 +61,12 @@ def indexCategory(request):
     data={}
     search = request.GET.get('search')
     if search:
-        data['db'] = Category.objects.filter(name__icontains=search)
+        data['db'] = Category.objects.filter(name__icontains=search) or Category.objects.filter(description__icontains=search)
     else:
         data['db'] = Category.objects.all()
         all =  Category.objects.all()
-        paginator = Paginator(all, 2)
-        pages = request.Get.get('page')
+        paginator = Paginator(all, 5)
+        pages = request.GET.get('page')
         data['db']= paginator.get_page(pages)
     data['indexCategory'] = CategoryForm
     return render(request, 'indexCategory.html', data)

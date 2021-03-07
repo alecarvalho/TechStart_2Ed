@@ -1,8 +1,8 @@
 from django.forms import ModelForm
-from ProductApp.models import Product, Category
+from marketplaceApp.models import Marketplaces
 
 # Create the form class.
 class MarketplaceForm(ModelForm):
      class Meta:
-        model = Product
+        model = Marketplaces
         fields = ['name', 'description', 'site', 'phone', 'email', 'technical_manager']

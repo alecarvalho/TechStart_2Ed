@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
+from marketplaceApp.models import Marketplaces
+from marketplaceApp.forms import MarketplaceForm
 
 # Create your views here.
 
@@ -19,11 +21,11 @@ def indexMarketplace(request):
 
 def formMarketplace(request):
     data = {}
-    data['formMarketPlace'] = MarketplacesForm()
-    return render(request, 'formMarketPlace.html', data)
+    data['formMarketplace'] = MarketplaceForm()
+    return render(request, 'formMarketplace.html', data)
 
 def createMarketplace(request):
-    form = MarketplacesForm(request.POST or None)
+    form = MarketplaceForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('indexMarketplace')
@@ -36,13 +38,13 @@ def viewMarketplace(request, pk):
 def editMarketplace(request, pk):
     data = {}
     data['db'] = Marketplaces.objects.get(pk=pk)
-    data['formMarketPlaces'] = MarketplacesForm(instance=data['db'])
+    data['formMarketplace'] = MarketplaceForm(instance=data['db'])
     return render(request, 'marketplacesForm.html', data)
 
 def updateMarketplace(request, pk):
     data = {}
     data['db'] = Marketplaces.objects.get(pk=pk)
-    form = MarketplacesForm(request.POST or None, instance=data['db'])
+    form = MarketplaceForm(request.POST or None, instance=data['db'])
     if form.is_valid():
         form.save()
         return redirect('indexMarketplace')

@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from sellersApp.views import index, form, create, view, edit, update, delete
+from sellersApp.views import home, index, form, create, view, edit, update, delete
 from ProductApp.views import formProduct, formCategory, indexCategory, indexProduct, viewCategory, viewProduct, createProduct, createCategory, editCategory, deleteCategory,updateCategory, editProduct, updateProduct, deleteProduct
 from marketplaceApp.views import indexMarketplace, formMarketplace, createMarketplace, viewMarketplace, editMarketplace, updateMarketplace, deleteMarketplace
 
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path('', index, name= 'index'),
+    path('', home, name= 'home'),
+    path('index', index, name= 'index'),
     path('form/', form, name= 'form'), 
     path('create/', create, name= 'create'),
     path('view/<int:pk>/', view, name= 'view'),
@@ -32,8 +33,7 @@ urlpatterns = [
 
 #Produtos e categorias
 
-    path('admin/', admin.site.urls),
-    path('', indexProduct, name= 'indexProduct'),
+    path('indexProduct', indexProduct, name= 'indexProduct'),
     path('formProduct/', formProduct, name= 'formProduct'), 
     path('createProduct/', createProduct, name= 'createProduct'),
     path('viewProduct/<int:pk>/', viewProduct, name= 'viewProduct'),
@@ -43,8 +43,7 @@ urlpatterns = [
 
 
 
-    path('admin/', admin.site.urls),
-    path('', indexCategory, name= 'indexCategory'),
+    path('indexCategory', indexCategory, name= 'indexCategory'),
     path('formCategory/', formCategory, name= 'formCategory'), 
     path('createCategory/', createCategory, name= 'createCategory'),
     path('viewCategory/<int:pk>/', viewCategory, name= 'viewCategory'),
@@ -54,8 +53,7 @@ urlpatterns = [
 
 
     # Marketplaces
-    path('admin/', admin.site.urls),
-    path('', indexMarketplace, name= 'indexMarketplace'),
+    path('indexMarketplace', indexMarketplace, name= 'indexMarketplace'),
     path('formMarketplace/', formMarketplace, name= 'formMarketplace'), 
     path('createMarketplace/', createMarketplace, name= 'createMarketplace'),
     path('viewMarketplace/<int:pk>/', viewMarketplace, name= 'viewMarketplace'),

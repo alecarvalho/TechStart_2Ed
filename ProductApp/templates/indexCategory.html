@@ -13,6 +13,16 @@
     <h1>Categorias</h1>
   </div>
   <div>
+  <div>
+      <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <a href="/" class="btn btn-success">Voltar</a>
+      </div>
+    </div>
+     <div class="col-4 m-auto pt-3 pb-2 text-center">
+      <form method="get"> 
+          <input type="text" id="search" name="search" class="form-control" placeholder="Buscar..."></div>
+      </form>
+    </div>
     <div class="table-responsive-md px-md-4">
       <table class="table table-hover pt-50">
         <thead class="table-dark">
@@ -20,7 +30,7 @@
             <th scope="col">Id</th>
             <th scope="col">Nome</th>
             <th scope="col">Descrição</th>
-            <th scope="col">Ações</th>
+            <th scope="col-lg-12 text-align-items-md-end">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -39,6 +49,21 @@
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="container">                 
+    <ul class="pagination">
+
+      {% if db.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{db.previous_page_number}}">Previous</a></li>
+      {%  endif %}
+
+           <li class="page-item"><a class="page-link" >{{db.number}}</a></li>
+
+      {% if db.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{db.next_page_number}}">Next</a></li>
+      {%  endif %}
+
+    </ul>
   </div>
   <div class="col-8 m-auto pt-4 pb-2 text-center">
     <a href="/formCategory" type="submit" class="btn btn-success">Adicionar</a>

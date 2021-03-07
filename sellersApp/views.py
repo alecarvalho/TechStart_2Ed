@@ -5,6 +5,11 @@ from sellersApp.models import Sellers
 
 
 # Create your views here.
+
+def home(request):
+    return render(request, 'home.html')
+    
+
 def index(request):
     data={}
     search = request.GET.get('search')
